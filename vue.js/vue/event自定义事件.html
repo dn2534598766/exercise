@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        父控件的代理属性：{{num}}<br>
+        <my-Component :count='num' @gogo="num++"></my-Component>
+    </div>
+    <script>
+         Vue.component('myComponent',{
+            props:['count'],
+            template:`<div>子控件：{{count+1}}<button @click="gogo">click</button></div>`,
+            methods:{
+                gogo:function(){
+                    this.$emit('gogo')
+                }
+            }
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                num:1000
+            }
+        })
+       
+    </script>
+</body>
+</html>

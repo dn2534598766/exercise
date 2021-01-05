@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child id='child1'></child>
+        <child id='child2'></child>
+        <child id='child3'></child>
+    </div>
+    <script>
+        var bus=new Vue({
+            
+        })
+        Vue.component('child',{
+            template:`<div>我是{{id}}<button @click="hujiao">呼叫一下</button>,刚收到{{sender}}的呼叫</div>`,
+            props:['id'],
+            methods:{
+                hujiao:function(){
+                    bus.$emit('sayhi',this.id)
+                }
+            },
+            data:function(){
+                return {
+                    sender:''
+                }
+            },
+            created:function(){
+                bus.$on('sayhi',($event)=>{
+                    this.sender=$event
+                })
+            }
+        })
+        bus.$mount('#app')
+    </script>
+</body>
+</html>

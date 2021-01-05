@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        请输入入学年份:<input type="text" v-model="content"><br/>
+        <span v-if="content==2018">大三</span>
+        <span v-else-if="content==2019">大二</span>
+        <span v-else-if="content==2020">大一</span>
+        <span v-else>毕业生</span>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                content:'2020'
+            }
+        })
+    </script>
+</body>
+</html>

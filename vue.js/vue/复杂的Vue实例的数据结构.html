@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        名:<input v-model="name">
+        姓:<input v-model="surName">
+        全名:<input v-model="fullName">
+        性别:<input v-model='sex'><br/>
+        <button @click="modifySex">修改性别</button>
+        <button @click="modifyFullName">修改全名</button>
+        <button @click="print">console.Log Vue</button>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                name:'York',
+                surName:'Cui',
+                sex:'男'
+            },
+            methods:{
+                modifySex:function(){
+                    this.sex='女'
+                },
+                modifyFullName:function(){
+                    this.name='Yu'
+                },
+                print:function(){
+                    console.log(Vue)
+                }
+            },
+            computed:{
+                fullName:{
+                    get:function(){
+                        return this.name+' '+this.surName
+                    },
+                    set:function(val){
+                        
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

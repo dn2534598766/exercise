@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <example prop-a="aa" :prop-c="title" :prop-f="11"></example><br/>
+    </div>
+    <script>
+        Vue.component('example',{
+            template:'<div>{{propA}}-{{propB}}--{{propC}}---{{propD}}----{{propE}}-----{{propF}}</div>',
+            props:{
+                propA:Number,
+                propB:[String,Number],
+                propC:{
+                    type:String,
+                    required:true
+                },
+                propD:{
+                    type:Number,
+                    default:100
+                },
+                propE:{
+                    type:Object,
+                    default:function(){
+                        return {message:'hello'}
+                    }
+                },
+                propF:{
+                    validator:function(value){
+                        return value>10
+                    }
+                }
+            }
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                title:'hello gdmec',
+            }
+        })
+    </script>
+</body>
+</html>

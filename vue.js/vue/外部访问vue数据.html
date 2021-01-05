@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <h1 ref="heading">{{ title }}</h1>
+        <button v-on:click="show" ref="myButton">显示段落</button>
+        <p v-if="showParagraph">这行不是总能看到的。</p>
+      </div>
+      
+      <div id="app2">
+        <h1>{{ title }}</h1>
+        <button @click="onChange"> 改变vue1里的值</button>
+      </div>
+      
+      <div id="app3">
+        
+      </div>
+    <script>
+        var data = {
+          title: 'Vue 实例',
+          showParagraph: false
+        }
+
+var vm1 = new Vue({
+  data: data,
+  methods: {
+    show: function() {
+      this.showParagraph = true;
+      this.updateTitle('vue 实例(更新后)');
+      this.$refs.myButton.innerText = '内测';
+      console.log(this.title)
+    },
+    updateTitle: function(title) {
+      this.title = title;
+    }
+  },
+  computed: {
+    lowercaseTitle: function() {
+      return this.title.toLowerCase();
+    }
+  },
+  watch: {
+    title: function(value) {
+      alert('标题被改, 当前值是: ' + value);
+    }
+  }
+});
+
+vm1.$mount('#app1');
+
+console.log(vm1.$data === data);
+vm1.$refs.heading.innerText = '其他的内容。';
+
+setTimeout(function() {
+  vm1.title = '计时器修改的',
+  vm1.show();
+}, 3000);
+
+var vm2 = new Vue({
+  el: '#app2',
+  data: {
+    title: '第二个vue实例'
+  },
+  methods: {
+    onChange: function() {
+      vm1.title = '修改了!';
+    }
+  }
+});
+
+var vm3 = new Vue({
+template: '<h1>Hello!</h1>'
+});
+
+vm3.$mount();
+console.log(vm3.$el)
+document.getElementById('app3').appendChild(vm3.$el);
+    </script> 
+</body>
+</html>

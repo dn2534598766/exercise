@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="js" @keyup.1="submit"><br/>
+        <input type="text" v-model="hi" @keyup.enter="submit"><br/>
+        <input type="text" v-model="what" @keyup.enter="submit"><br/>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                js:'Vue.js',
+                hi:'hihihi',
+                what:'whatwhatwhat'
+            },
+            methods:{
+                submit:function(){
+                    alert('尝试提交')
+                    console.log("已触发")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

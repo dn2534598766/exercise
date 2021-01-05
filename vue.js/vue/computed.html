@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computerd的学习</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="a">
+        <h1>{{computer()}}</h1>
+    </div>
+    <script>
+        var data={
+                count:5,
+                price:12,
+                discount:0.8,
+                freight:5
+            };
+        var vm=new Vue({
+            el:"#a",
+            data:data,
+            computed:{
+                humour:function(){
+                    return this.$data.count*this.$data.price*this.$data.discount*this.$data.freight;
+                }
+            },
+            methods:{
+                computer:function(){
+                    return this.$data.count*this.$data.price*this.$data.discount*this.$data.freight;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

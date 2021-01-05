@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="btn('表单无法提交', $event)">形参传递event</button>
+        <button id='btn2' @click='warn1'>只绑定方法名称会自动传递event</button>  
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            methods:{
+                btn(message,event){
+                    if (event) event.preventDefault()
+                    alert(message)
+                },
+                warn1(event) {
+                    alert(event.target.id)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

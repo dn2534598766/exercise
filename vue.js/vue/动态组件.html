@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click='id++'>换组件</button><br/>
+        <component :is='list[id%3]'></component>
+    </div>
+    <script>
+        Vue.component('myImg',{
+            template:`<img src='../image/加号.jpg'>`
+        })
+        Vue.component('myButton',{
+            template:`<button style="color:blue">炫酷按钮</button>`
+        })
+        Vue.component('myFrame',{
+            template:`<iframe src='http://www.gdmec.cn/show.asp?id=6962'></ifame>`
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                list:['myImg','myButton','myFrame'],
+                id:0
+            }
+        })
+    </script>
+</body>
+</html>

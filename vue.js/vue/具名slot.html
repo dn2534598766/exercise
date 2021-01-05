@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>这是父组件----</p>
+        <york-component>
+            <template v-slot:footer>传到footer中</template>
+            <template v-slot:header>传到header中</template>
+        </york-component>
+        <p>-------</p>
+    </div>
+    <script>
+        
+        var vm=new Vue({
+            el:'#app',
+            data:{
+
+            },
+            components:{
+                yorkComponent:{
+                    template:`<div>
+                    <p>这是子组件*****</p>
+                    <header>
+                    <slot name='header'>这是header</slot>
+                    </header>
+                    <footer>
+                    <slot name='footer'>这是footer</slot>
+                    </footer>
+                    <p>*******</p>
+                    </div>
+                    `
+                }
+            }
+        })
+    </script>
+</body>
+</html>

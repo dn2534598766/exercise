@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-highlight:color.delayed="'blue'">{{message}}</p>
+    </div>
+    <script>
+        Vue.directive('highlight',{
+            bind(el,binding,vnode){
+                var time=0;
+                if(binding.modifiers['delayed']){
+                    time=3000
+                }
+                setTimeout(()=>{
+                    if(binding.arg=='background'){
+                        el.style.backgroundColor=binding.value;
+                    }else if(binding.arg=='color'){
+                        el.style.color=binding.value;
+                    }else{
+                        el.style.backgroundColor='yellow'
+                    }
+                },time)
+            }
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                message:'hello'
+            }
+        })
+    </script>
+</body>
+</html>

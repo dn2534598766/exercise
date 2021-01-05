@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../lib/vue-2.4.0.js"></script>
+<body>
+    <div id="app">
+    <input type="text" v-model='inputvalue'>
+    <button @click="handleBtnClick">提交</button>
+    <ul>
+        <li v-for="item in list">{{item}}</li>
+    </ul>
+</div>
+
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            list:[],
+            inputvalue:''
+        },
+        methods:{
+            handleBtnClick:function(){
+                this.list.push(this.inputvalue)
+                this.inputvalue=''
+            }
+        }
+    })
+</script>
+</body>
+</html>

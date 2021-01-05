@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+<div id="app">
+select无法解析自定义组件 不渲染自定义组件  使用is才行<br>
+<select>
+    <my-option v-for="data in datas" :text="data" key="data"></my-option>
+  <option  is="my-option" v-for="data in datas" :text="data+ 'is'" key="data"></option>
+</select><br>
+select 无法解析javascript中 type=text/x-template 定义的模板 使用is才行<br>
+<select>
+  <jstemplate-option v-for="data in datas" :text="data" key="data"></jstemplate-option>
+  <option is="jstemplate-option" v-for="data in datas"  :text="data+' is'"  key="data"></option>
+</select><br>
+select 无法解析javascript中的 string template 定义的模板  使用is才行<br>
+<select>
+  <string-template v-for="data in datas" :text="data" key="data"></string-template>
+  <option is="string-template" v-for="data in datas" :text="data+' is'" key="data"></option>
+</select><br>
+select中的optgroup无法解析自定义组件，不渲染自定义组件<br>
+<select>
+  <optgroup>
+    <my-option v-for="data in datas" :text="data" key="data"></my-option>
+  </optgroup>
+  <optgroup>
+    <my-option v-for="data in datas" :text="data" key="data"></my-option>
+  </optgroup>  
+</select><br>
+select中的optgroup无法解析自定义组件，不渲染自定义组件<br>
+<select>
+  <optgroup>
+    <option is="my-option" v-for="data in datas" :text="data" key="data"></option>
+  </optgroup>
+  <optgroup>
+    <option is="my-option" v-for="data in datas" :text="data" key="data"></option>
+  </optgroup>  
+</select><br>
+inline-template<br>
+<select>
+  <inline inline-template :text="title">
+    <option >{{text}}</option> 
+  </inline>
+</select><br>
+
+ol可以解析自定义组件<br>
+<ol>
+  <my-li v-for="data in datas" :text="data" key="data"></my-li>
+</ol><br>
+ul可以解析自定义组件<br>
+<ul>
+  <my-li v-for="data in datas" :text="data" key="data"></my-li>
+</ul>
+ul可以解析自定义组件，使用is跟不使用is是一样的<br>
+<ul>
+  <li is="my-li" v-for="data in datas" :text="data" key="data"></li>
+</ul><br>
+
+ table无法解析自定义组件 会把自定义tr组件提到前面渲染<br>
+<table border="1">
+  <tr><td>原生的tr和td</td></tr>
+  <my-tr v-for="data in datas" :text="data"></my-tr>
+</table><br>
+table使用is就可以解析自定义的tr组件，并且自定义的tr组件里面的自定义td组件是可以解析渲染的<br>
+<table border="1">
+  <tr><td>原生的tr和td</td></tr>
+  <tr is="my-tr" v-for="data in datas" :text="data"></tr>
+</table><br>
+tr无法解析自定义组件，会把自定义的td组件提到前面渲染<br>
+<table border="1">
+  <tr><td>原生的tr和td</td></tr>
+  <tr>
+    <my-td v-for="data in datas" :text="data"></my-td>
+  </tr>
+</table><br>
+tr使用is就可以解析自定义的td组件<br>
+<table border="1">
+  <tr><td>原生的td1</td><td>原生的td2</td><td>原生的td3</td><td>原生的td4</td></tr>
+  <tr>
+    <td is="my-td" v-for="data in datas" :text="data"></td>
+  </tr>
+</table><br>
+dl可以解析自定义组件<br>
+<dl>
+  <my-dt v-for="data in datas" :text="data"></my-dt>
+</dl><br>
+datalist可以解析自定义组件<br>
+<input list="mylist" />
+<datalist id="mylist">
+  <my-option v-for="data in datas" :text="data" key="data"></my-option>
+</datalist><br>
+x-template可以解析自定义组件<br>
+<js-temp-late1 :datas="datas">
+</js-temp-late1><br>
+
+
+<script id="jstemplate" type="text/x-template">
+  <option>{{text}}</option>
+</script>
+
+<script id="jstemplate1" type="text/x-template">
+  <select>
+    <jstemplateOption v-for="data in datas" :text="data" ></jstemplateOption>
+  </select>
+</script>
+<script>
+var templateOption={
+    props:['text'],
+    template:'<option>{{text}}</option>'
+  }
+  Vue.component('myOption',templateOption)
+  
+  Vue.component('jstemplateOption',{
+    props:['text'],
+    template: '#jstemplate'
+  })
+  
+  Vue.component('jsTempLate1',{
+    props:['datas'],
+    template: '#jstemplate1'
+  })
+  
+  
+  Vue.component('stringTemplate', {
+    template: `
+      <option>
+        {{ text }}
+      </option>
+    `,
+    props: ['text'],
+  })
+  
+  Vue.component('inline',{
+    props: ['text']
+  })
+  
+  var templateLi={
+    props:['text'],
+    template:'<li>{{text}}</li>'
+  }
+  Vue.component('myLi',templateLi)
+  
+  var templateTd={
+    props:['text'],
+    template:'<td>{{text}}</td>'
+  }
+  Vue.component('myTd',templateTd)
+  
+  var templateTr={
+    props:['text'],
+    template:'<tr><my-td :text="text"></my-td></tr>'
+  }
+  Vue.component('myTr',templateTr)
+  
+  var templateDt={
+    props:['text'],
+    template:'<dt>{{text}}</dt>'
+  }
+  Vue.component('myDt',templateDt)
+  
+  
+  new Vue({
+    el: '#app',
+    data: {
+      title: 'Hello GDMEC',
+      datas: [
+        'aa',
+        'bb',
+        'cc',
+        'dd'
+      ]
+    }
+  })
+</script>
+</body>
+</html>

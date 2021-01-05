@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>父组件----</p>
+        <york-component>
+            <p>这些内容会传到子组件的slot中</p>
+        </york-component>
+        <p>-------父组件</p>
+    </div>
+    <script>
+        Vue.component('yorkComponent',{
+            template:`<div><p>子组件---</p>
+            <p>插槽内容如下：</p>
+            <slot>这是子组件的默认内容</slot>
+            <p>--子组件</p>
+            </div>`,
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>
