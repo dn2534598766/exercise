@@ -9,12 +9,12 @@
 <body>
   <div id="app">
     <span v-if='control'>
-      <label for='user'>用户名登录</label>
-      <input type='text' placeholder="请输入用户名" id="user">
+      <label for='user'>用户登录</label>
+      <input type='text' placeholder="请输入用户名" id="user" key="user">
     </span>
     <span v-else>
       <label for='email'>邮箱登录</label>
-      <input type="text" placeholder="请输入邮箱" id="email">
+      <input type="text" placeholder="请输入邮箱" id="email" key="email">
     </span>
     <button @click='change()'>切换登录方式</button>
   </div>
