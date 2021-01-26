@@ -67,7 +67,7 @@ const app = new Vue({
       //   return result
 
       return this.books.reduce((sum,every)=>{
-        return sum+=every.count*every.price
+        return sum+every.count*every.price
       },0)
     }
   }

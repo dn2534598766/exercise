@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model中的select</title>
+</head>
+<body>
+  <div id="app">
+    <select v-model="fruits"  multiple>
+      <option v-for="item in originFruits" :value="item">{{item}}</option>
+    </select>
+    <h2>你选择的水果是:{{fruits}}</h2>
+  </div>
+
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        fruit:'葡萄',
+        fruits:[],
+        originFruits:['苹果','香蕉','葡萄','樱桃']
+      }
+    })
+  </script>
+</body>
+</html>
