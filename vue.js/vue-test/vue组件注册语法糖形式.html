@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件注册语法糖形式</title>
+</head>
+<body>
+  <div id="app">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    Vue.component('cpn1',{
+      template:`
+        <div>
+          <h2>我是cpn1</h2>
+        </div>`
+    })
+    const app = new Vue({
+      el:'#app',
+      data:{
+
+      },
+      components:{
+        cpn2:{
+          template:`
+            <div>
+              <h2>我是cpn2</h2>
+            </div>`
+        }
+      }
+    })
+  </script>
+</body>
+</html>
