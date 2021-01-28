@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件通信父传子</title>
+</head>
+<body>
+  <div id="app">
+    <cpn  :cmessage="message" :chobbies="hobbies"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>{{cmessage}}</h2>
+      <p>{{chobbies}}</p>
+    </div>
+  </template>
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:'我是cpn',
+        hobbies:['游泳','下棋','编程','音乐']
+      },
+      components:{
+        'cpn':{
+          template:'#cpn',
+          // props:['cmessage','chobbies']
+          props:{
+            cmessage:{
+              type:String,
+              default:'aaaaa',
+              // required:true
+            },
+            chobbies:{
+              type:Array,
+              default(){
+                return []
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
