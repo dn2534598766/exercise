@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件通信子传父(自定义事件)</title>
+</head>
+<body>
+  <div id="app">
+    <cpn @itemclick="cpnClick"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <button v-for="item in message" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+  </template>
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+
+      },
+      methods:{
+        cpnClick(item){
+          console.log(item)
+        }
+      },
+      components:{
+        'cpn':{
+          template:'#cpn',
+          data(){
+            return {
+              message:[
+                {name:'李华',age:16},
+                {name:'张三',age:40},
+                {name:'王红',age:25}
+              ]
+            }
+          },
+          methods:{
+            btnClick(item){
+              this.$emit('itemclick',item)
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
