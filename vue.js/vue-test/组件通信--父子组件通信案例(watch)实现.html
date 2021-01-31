@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件通信--父子组件通信案例</title>
+</head>
+<body>
+  <div id="app">
+    <cpn :number1="num1" :number2="num2" @num1change="receive" @num2change="receive2"></cpn>
+  </div>
+  
+  <template id="cpn">
+    <div>
+      <h2>这是data{{dnumber1}}</h2>
+      <h2>这是props{{number1}}</h2>
+      <input type="text" v-model="dnumber1">
+      <h2>这是data{{dnumber2}}</h2>
+      <h2>这是props{{number2}}</h2>
+      <input type="text" v-model="dnumber2">
+    </div>
+  </template>
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        num1:100,
+        num2:200
+      },
+      methods:{
+        receive(value){
+          this.num1=parseInt(value)
+        },
+        receive2(value){
+          this.num2=parseInt(value)
+        }
+      },
+      components:{
+        'cpn':{
+          template:'#cpn',
+          props:{
+            number1:Number,
+            number2:Number
+          },
+          data(){
+            return {
+              dnumber1:this.number1,
+              dnumber2:this.number2
+            }
+          },
+          watch:{
+            dnumber1(newValue){
+              this.dnumber2=newValue/100
+              this.$emit('num1change',newValue)
+            },
+            dnumber2(newValue){
+              this.dnumber1=newValue*100
+              this.$emit('num2change',newValue)
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
