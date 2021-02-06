@@ -9,9 +9,25 @@ require('./css/splice.less')
 document.writeln('<p>你好啊!</p>')
 
 import Vue from 'vue'
-const app = new Vue({
+// const App = {
+//   template:`
+//     <div>
+//       <h2>Talk is cheap,show me the code.</h2>
+//       <p>{{message}}</p>
+//     </div> `
+//   ,
+//   data(){
+//     return {
+//       message:'我是vue实例'
+//     }
+//   }
+// }
+import App from './vue/App.vue'
+ new Vue({
   el:'#app',
-  data:{
-    message:'我是vue实例'
+  template:'<App></App>'
+  ,
+  components:{
+    App
   }
 })
