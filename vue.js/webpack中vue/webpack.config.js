@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack=require('webpack')
 module.exports={
   entry:'./src/main.js',
   output:{
@@ -54,5 +55,8 @@ module.exports={
         use:['vue-loader']
       }
     ]
-  }
+  },
+  plugins:[
+    new webpack.BannerPlugin('这是一个练习')
+  ]
 }
