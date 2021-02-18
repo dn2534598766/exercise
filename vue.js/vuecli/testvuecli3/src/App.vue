@@ -8,8 +8,10 @@
     <button @click="about">关于</button> -->
     <router-link to="/home">首页</router-link>
     <router-link to="/about">关于</router-link>
-    <router-link :to="'/user/'+userId">用户</router-link>
-    <router-link :to="{path:'/introduction',query:{name:'cuiyu',age:21,sex:'man'}}">简介</router-link>
+    <!-- <router-link :to="'/user/'+userId">用户</router-link>
+    <router-link :to="{path:'/introduction',query:{name:'cuiyu',age:21,sex:'man'}}">简介</router-link> -->
+    <button @click="userClick">用户</button>
+    <button @click="introductionClick">简介</button>
     <router-view></router-view>
   </div>
 </template>
@@ -24,6 +26,15 @@ export default {
     about(){
       this.$router.push('/about')
       console.log('about')
+    },
+    userClick(){
+      this.$router.push('/user/'+this.userId)
+    },
+    introductionClick(){
+      this.$router.push({
+        path:'/introduction',
+        query:{name:'rico',age:24,sex:'男'}
+      })
     }
   },
   data(){
