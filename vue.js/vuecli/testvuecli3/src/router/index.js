@@ -32,7 +32,10 @@ const routes = [
         path:'news',
         component:HomeNews
       }
-    ]
+    ],
+    meta:{
+      title:'首页'
+    }
   },
   {
     path: '/about',
@@ -40,16 +43,25 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta:{
+      title:'关于'
+    }
   },
   {
     path:'/user/:id',
     name:'User',
-    component:User
+    component:User,
+    meta:{
+      title:'用户'
+    }
   },
   {
     path:'/introduction',
-    component:Introduction
+    component:Introduction,
+    meta:{
+      title:'简介'
+    }
   }
 ]
 
@@ -58,7 +70,13 @@ const router = new VueRouter({
   mode:'history',
   linkActiveClass:'active'
 })
-
+router.beforeEach((to,from,next)=>{
+  next()
+  document.title=to.matched[0].meta.title
+})
+router.afterEach((to,from)=>{
+  console.log(to,from)
+})
 export default router
 
 
