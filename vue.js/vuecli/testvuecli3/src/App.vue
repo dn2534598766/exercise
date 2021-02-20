@@ -12,7 +12,9 @@
     <router-link :to="{path:'/introduction',query:{name:'cuiyu',age:21,sex:'man'}}">简介</router-link> -->
     <button @click="userClick">用户</button>
     <button @click="introductionClick">简介</button>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 

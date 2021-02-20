@@ -3,6 +3,12 @@ import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 // import User from '../views/User.vue'
 
+const originalPush = VueRouter.prototype.push
+
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 const Home = ()=>import('../views/Home.vue')
 const User = ()=>import('../views/User.vue')
 const Introduction = ()=>import('../views/Introduction.vue')
@@ -61,6 +67,10 @@ const routes = [
     component:Introduction,
     meta:{
       title:'简介'
+    },
+    beforeEnter:(to,from,next)=>{
+      console.log(from)
+      next()
     }
   }
 ]
@@ -74,9 +84,9 @@ router.beforeEach((to,from,next)=>{
   next()
   document.title=to.matched[0].meta.title
 })
-router.afterEach((to,from)=>{
-  console.log(to,from)
-})
+// router.afterEach((to,from)=>{
+//   console.log(to,from)
+// })
 export default router
 
 

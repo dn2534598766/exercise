@@ -12,5 +12,20 @@
 
 export default {
   name: 'Home',
+  data(){
+    return {
+      path:'/home/message'
+    }
+  },
+  activated(){
+    this.$router.push(this.path)
+  },
+  created(){
+    console.log(this.path)
+  },
+  beforeRouteLeave(to,from,next){
+    this.path = this.$route.path
+    next()
+  }
 }
 </script>
