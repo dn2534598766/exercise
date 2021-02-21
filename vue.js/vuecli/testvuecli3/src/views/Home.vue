@@ -21,7 +21,7 @@ export default {
     this.$router.push(this.path)
   },
   created(){
-    console.log(this.path)
+    console.log('created')
   },
   beforeRouteLeave(to,from,next){
     this.path = this.$route.path

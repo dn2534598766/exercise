@@ -12,7 +12,8 @@
     <router-link :to="{path:'/introduction',query:{name:'cuiyu',age:21,sex:'man'}}">简介</router-link> -->
     <button @click="userClick">用户</button>
     <button @click="introductionClick">简介</button>
-    <keep-alive>
+    <!-- keep-alive可以有include跟exclude属性，include设置只有符合要求的组件会被缓存，exclude设置哪些组件不会缓存 -->
+    <keep-alive exclude="Home">
       <router-view/>
     </keep-alive>
   </div>
