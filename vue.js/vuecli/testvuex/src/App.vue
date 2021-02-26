@@ -4,6 +4,7 @@
     <h2>大于20岁的学生信息:{{$store.getters.moreAgeStu(20)}}</h2>
     <button @click="increase">+</button>
     <button @click="decrease">-</button>
+    <button @click="increaseCount(5)">+5</button>
   </div>
 </template>
 
@@ -16,6 +17,9 @@ export default {
     },
     decrease(){
       this.$store.commit('subCount')
+    },
+    increaseCount(count){
+      this.$store.commit('increaseCount',count)
     }
   }
 }

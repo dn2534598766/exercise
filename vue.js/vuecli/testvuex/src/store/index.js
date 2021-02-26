@@ -19,6 +19,9 @@ const store = new Vuex.Store({
     },
     subCount(state){
       state.counter--
+    },
+    increaseCount(state,count){
+      state.counter+=count
     }
   },
   getters:{
