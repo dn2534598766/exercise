@@ -5,8 +5,10 @@
     <button @click="increase">+</button>
     <button @click="decrease">-</button>
     <button @click="increaseCount(5)">+5</button>
+    <button @click="addStudent">添加学生信息</button>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -20,6 +22,10 @@ export default {
     },
     increaseCount(count){
       this.$store.commit('increaseCount',count)
+    },
+    addStudent(){
+      const student = {id:170,name:'php',age:38}
+      this.$store.commit('addStudent',student)
     }
   }
 }
