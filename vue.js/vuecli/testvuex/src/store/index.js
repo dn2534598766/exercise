@@ -11,7 +11,11 @@ const store = new Vuex.Store({
       {id:101,name:'python',age:49},
       {id:102,name:'golang',age:16},
       {id:103,name:'ruby',age:20}
-    ]
+    ],
+    info:{
+      name:'jay',
+      age:59,
+    }
   },
   mutations:{
     addCount(state){
@@ -25,6 +29,12 @@ const store = new Vuex.Store({
     },
     addStudent(state,student){
       state.students.push(student)
+    },
+    addAttribute(state){
+      Vue.set(state.info,"sex","男")
+    },
+    deleteAttribute(state){
+      Vue.delete(state.info,"age")
     }
   },
   getters:{
