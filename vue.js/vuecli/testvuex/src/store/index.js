@@ -1,8 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import {INCREASECOUNT} from './mutations-type'
+
 Vue.use(Vuex)
 
+const moudleA = {
+  state:{
+    name:'lishan',
+    age:40
+  },
+  mutations:{
+    fullName(state){
+      state.name+='1111111'
+    }
+  },
+  actions:{},
+}
 const store = new Vuex.Store({
   state:{
     counter:1000,
@@ -24,7 +38,7 @@ const store = new Vuex.Store({
     subCount(state){
       state.counter--
     },
-    increaseCount(state,count){
+    [INCREASECOUNT](state,count){
       state.counter+=count
     },
     addStudent(state,student){
@@ -35,6 +49,9 @@ const store = new Vuex.Store({
     },
     deleteAttribute(state){
       Vue.delete(state.info,"age")
+    },
+    updataInfo(state){
+      Vue.set(state.info,'age',20)
     }
   },
   getters:{
@@ -45,6 +62,20 @@ const store = new Vuex.Store({
         })
       }
     }
+  },
+  actions:{
+    aUpdataInfo(context,message){
+      return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          context.commit('updataInfo')
+          console.log(message)
+          resolve('1111111')
+        },1000)
+      })
+    }
+  },
+  modules:{
+    a:moudleA
   }
 })
 
