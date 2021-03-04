@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import axios from 'axios'
-
+import {request} from '../network/request'
 Vue.use(Router)
 
 const routes = [
@@ -23,19 +23,41 @@ export default router
 //     page:1
 //   }
 // }).then(res=>console.log(res))
-axios.defaults.baseURL='http://123.207.32.32:8000'
-axios.defaults.timeout=5000
-axios.all([
-  axios({
-    url:'/home/multidata'
-  }),
-  axios({
-    url:'/home/data',
-    params:{
-      type:"sell",
-      page:3
-    }
-  })]).then(axios.spread((res1,res2)=>{
-    console.log(res1)
-    console.log(res2)
-  }))
+// axios.defaults.baseURL='http://123.207.32.32:8000'
+// axios.defaults.timeout=5000
+// axios.all([
+//   axios({
+//     url:'/home/multidata'
+//   }),
+//   axios({
+//     url:'/home/data',
+//     params:{
+//       type:"sell",
+//       page:3
+//     }
+//   })]).then(axios.spread((res1,res2)=>{
+//     console.log(res1)
+//     console.log(res2)
+//   }))
+// request({
+//   url:'/home/multidata'
+// })
+// .then(res=>{
+//   console.log(res)
+// }).catch(err=>{
+//   console.log(err)
+// })
+// request({
+//   url:'/home/data'
+// }).then(res=>{
+//   console.log(res)
+// }).catch(err=>{
+//   console.log(err)
+// })
+request({
+  url:'/home/multidata'
+}).then(res=>{
+  console.log(res)
+}).catch(err=>{
+  console.log(err)
+})
