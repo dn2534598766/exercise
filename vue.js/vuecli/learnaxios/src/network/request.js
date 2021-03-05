@@ -9,15 +9,41 @@ import axios from 'axios'
 //   return instance(config)
 // }
 
-export function request(config,success,error){
+// export function request(config,success,failure){
+//   const instance = axios.create({
+//     baseURL:'http://123.207.32.32:8000',
+//     timeout:5000
+//   })
+
+//   instance(config).then(res=>{
+//     success(res)
+//   }).catch(err=>{
+//     failure(err)
+//   })
+// }
+
+// export function request(config){
+//   const instance = axios.create({
+//     baseURL:'http://123.207.32.32:8000',
+//     timeout:5000
+//   })
+
+//   instance(config.url).then(res=>{
+//     config.success(res)
+//   }).catch(err=>{
+//     config.failure(err)
+//   })
+// }
+
+export function request(config,success,failure){
   const instance = axios.create({
     baseURL:'http://123.207.32.32:8000',
     timeout:5000
   })
 
-  instance(config).then({
-    success()
-  }).catch({
-    error()
+  instance(config).then(res=>{
+    success(res)
+  }).catch(err=>{
+    failure(err)
   })
 }

@@ -54,10 +54,35 @@ export default router
 // }).catch(err=>{
 //   console.log(err)
 // })
+
+// request({
+//   url:'/home/multidata'
+// },
+//   res=>{
+//     console.log(res)
+//   },
+//   err=>{
+//     console.log(err)
+// })
+
+// const config = {
+//   url:'/home/multidata',
+//   success:(res)=>{
+//     console.log(res)
+//   },
+//   failure:(err)=>{
+//     console.log(err)
+//   }
+// }
+// request(config)
+
 request({
   url:'/home/multidata'
-}).then(res=>{
+},
+res=>{
   console.log(res)
-}).catch(err=>{
+},
+err=>{
   console.log(err)
-})
+}
+)
