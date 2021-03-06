@@ -35,15 +35,28 @@ import axios from 'axios'
 //   })
 // }
 
-export function request(config,success,failure){
+// export function request(config,success,failure){
+//   const instance = axios.create({
+//     baseURL:'http://123.207.32.32:8000',
+//     timeout:5000
+//   })
+
+//   instance(config).then(res=>{
+//     success(res)
+//   }).catch(err=>{
+//     failure(err)
+//   })
+// }
+
+export function request(config){
   const instance = axios.create({
     baseURL:'http://123.207.32.32:8000',
     timeout:5000
   })
 
   instance(config).then(res=>{
-    success(res)
+    config.success(res)
   }).catch(err=>{
-    failure(err)
+    config.failure(err)
   })
 }
