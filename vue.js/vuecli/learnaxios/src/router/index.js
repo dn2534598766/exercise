@@ -86,12 +86,23 @@ export default router
 //   console.log(err)
 // }
 // )
+
+// request({
+//   url:'/home/multidata',
+//   success(res){
+//     console.log(res)
+//   },
+//   failure(err){
+//     console.log(err)
+//   }
+// })
+
 request({
   url:'/home/multidata',
-  success(res){
+  success:res=>{
     console.log(res)
   },
-  failure(err){
+  failure:err=>{
     console.log(err)
   }
 })
