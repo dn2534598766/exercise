@@ -76,16 +76,16 @@ export default router
 // }
 // request(config)
 
-// request({
-//   url:'/home/multidata'
-// },
-// res=>{
-//   console.log(res)
-// },
-// err=>{
-//   console.log(err)
-// }
-// )
+request({
+  url:'/home/multidata'
+},
+res=>{
+  console.log(res)
+},
+err=>{
+  console.log(err)
+}
+)
 
 // request({
 //   url:'/home/multidata',
@@ -97,12 +97,12 @@ export default router
 //   }
 // })
 
-request({
-  url:'/home/multidata',
-  success:res=>{
-    console.log(res)
-  },
-  failure:err=>{
-    console.log(err)
-  }
-})
+// request({
+//   url:'/home/multidata',
+//   success:res=>{
+//     console.log(res)
+//   },
+//   failure:err=>{
+//     console.log(err)
+//   }
+// })
