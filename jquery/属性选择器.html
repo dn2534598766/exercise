@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div>
+        <a href="https://baidu.com">百度</a>
+        <a href="https://jingdong.com">京东</a>
+        <a href="https://taobao.com">淘宝</a>
+    </div>
+    <ul id='a'>
+        <li>滑稽</li>
+        <li>QAQ</li>
+    </ul>
+    <ul id="a">
+        <li class="a">humour</li>
+        <li>QAQ</li>
+    </ul>
+    <button>登录</button>
+    <input type='button' value="注册">
+    <table border=1>
+        <tr>
+            <th>编程语言</th>
+            <th>主要应用</th>
+        </tr>
+        <tr>
+            <td>javascript</td>
+            <td>前端</td>
+        </tr>
+        <tr>
+            <td>java</td>
+            <td>移动应用</td>
+        </tr>
+        <tr>
+            <td>python</td>
+            <td>人工智能</td>
+        </tr>
+        <tr>
+            <td>c#</td>
+            <td>3D制作</td>
+        </tr>
+    </table>
+</body>
+<script>
+    //$("[href='https://jingdong.com']").css('border',"1px solid red")  直接匹配属性值
+    //$('[href^="https"]').css('border',"1px solid red")  匹配属性值开头
+    //$("[href$='com']").css("border","1px solid red")  平匹配属性值结尾
+    //$('[href*="j"]').css('border','1px solid red')  //匹配属性包含的值
+    //$("ul li:first-child").css('border','1px solid red')
+    //$("#a li:first-child").css('border','1px solid red')
+    //var a=document.getElementById('a').classList
+
+    //$(':button').css('border','1px solid red')
+    $('tr:even').css('background','red')
+</script>
+</html>

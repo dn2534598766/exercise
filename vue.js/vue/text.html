@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+</head>
+<style>
+    .QAQ{
+        background-color: aqua;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="vue_det">
+        <h1>我是一个{{msg}}</h1>
+        <h1>你个{{humour}}</h1><br/>
+        {{text.split('').reverse().join('')}}
+        <h1>{{details()}}</h1>
+        <button @click="pao">点我</button>
+        <p :class="{'QAQ':use}">你根本不是滑稽！</p>
+        <li v-for="(goods,index) in goodslist">{{goods.name}}==={{goods.price}}</li>
+        <li v-for="goods in filterGoodslist">
+            {{goods.name}}===={{goods.price}}
+        </li>
+    </div>
+    <script type="text/javascript">
+        var vm=new Vue({
+            el:"#vue_det",
+            data:{
+                msg:"滑稽",
+                humour:"憨憨",
+                use:true,
+                text:"Student",
+                goodslist:[
+                    {name:'iphone',price:'8888'},
+                    {name:'ma3',price:'222'},
+                    {name:'vidio',price:'542'}
+                ],
+            },
+            methods:{
+                details:function(){
+                    return this.msg;
+                },
+                pao:function(){
+                    return alert("只要你在，我三生都期待！");
+                }
+            },
+            computed:{
+                filterGoodslist:function(){
+                    return this.goodslist.filter(function(goods){
+                        return goods.price>6000;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+
+</html>

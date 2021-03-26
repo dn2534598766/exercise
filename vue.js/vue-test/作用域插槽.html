@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域插槽</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn>
+      <template v-slot="slot">
+        <ul v-for="item in slot.data">
+          <li>这是作用域插槽的item:{{item}}</li>
+        </ul>
+      </template>
+    </cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <slot :data="message">
+        <ul v-for="item in message">
+          <li>这是默认插槽的item:{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+
+      },
+      components:{
+        'cpn':{
+          template:'#cpn',
+          data(){
+            return {
+              message:[
+                'javaScript',
+                'c++',
+                'Ruby',
+                'golang',
+                'python',
+                'java' 
+              ]
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

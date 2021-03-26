@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue计算属性get和set</title>
+  <style>
+  </style>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>a的值是：{{a}}</p>
+    <p>b的值是：{{b}}</p>
+    <button @click="change">按钮</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data:{
+        a:1
+      },
+      computed: {
+       b: {
+        // getter
+        get: function () {
+         return this.a + 10
+        },
+        // setter
+        set: function (val) {
+            console.log(val)
+          this.a = val
+        }
+       }
+      },
+      methods:{
+       change() {
+       this.b = 2
+       }
+      }
+    })
+  </script>
+</body>
+</html>

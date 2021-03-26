@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../lib/vue-2.4.0.js"></script>
+<body>
+    <div id="app">
+        <local-component></local-component>
+    </div>
+    <script>
+        //自定义组件
+        /*const my=Vue.component('my-component',{
+            template:
+            <div>
+                <span>this is span content.</span>
+            </div>
+        })  */
+        const localComponent={
+                    template:"<div>this is local-component content.</div>"
+                }
+        var vm=new Vue({
+            el:'#app',
+            components:{
+                localComponent
+            }
+        })
+    </script>
+</body>
+</html>

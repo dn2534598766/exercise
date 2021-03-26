@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child1-component></child1-component>
+        <child2-component :message="message" ref="child2"></child2-component>
+    </div>
+
+    <template id="child1">
+        <div>
+            <button @click="updateChild2">更新组件2的内容</button>
+        </div>
+    </template>
+    <template id="child2">
+        <div>
+            message={{message}}
+            <p>name={{name}}</p>
+        </div>
+    </template>
+    <script>
+        const bus=new Vue();
+
+        const child1Component={
+            template:'#child1',
+            methods:{
+                updateChild2:function(){
+                    bus.$emit('child1-event','update name from child1 by bus');
+                }
+            }
+        };
+        const child2Component={
+            template:'#child2',
+            props:['message'],
+            data:function(){
+                return {
+                    name:'child2'
+                };
+            },
+            created:function(){
+                const app=this;
+                bus.$on('chhild1-event',function(param){
+                    console.log('捕获到了child1-event事件')
+                    console.log(param);
+                    app.name=param;
+                })
+            }
+        }
+    </script>
+</body>
+</html>

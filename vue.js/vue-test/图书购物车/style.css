@@ -1,0 +1,18 @@
+table {
+  border: 1px solid black;
+  border-collapse:collapse;
+  border-spacing: 0;
+}
+tr {
+  background-color: blanchedalmond;
+}
+th {
+  background-color: darkgray;
+  font-weight: 600;
+  color:#5c6b77
+}
+th,td {
+  padding:8px 16px;
+  text-align: left;
+  border: 1px solid red;
+}

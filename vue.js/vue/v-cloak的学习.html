@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-cloak的学习</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="humour"><p v-cloak>{{msg}}{{fj}}</p>
+    <p v-text="msg"></p>
+    <p v-html='fj'></p></div>
+    
+    <script src="../lib/vue-2.4.0.js"></script>
+    <script>
+        var d=new Vue({
+            el:".humour",
+            data:{
+                msg:'412341564',
+                fj:'<h1>28491</h1>'
+            }
+        })
+    </script>
+</body>
+</html>

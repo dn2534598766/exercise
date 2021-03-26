@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input  v-model="message"><br/>
+        <div>1.单行文本:{{message}}</div><br/><br/>
+        <textarea v-model="message">{{message}}</textarea>
+        2.多行文本:<br/>{{message}}<br/><br/>
+        3.单个勾选框,逻辑值:<input type="checkbox" v-model="kaiguan" id="checkbox1">
+        <label for="checkbox1">{{kaiguan}}</label><br/><br/>
+        4.多个勾选框,绑定到同一个数组:<input type="checkbox" v-model="array" id="shuzu1"value="雷锋">
+        <label for="shuzu1">雷锋</label>
+        <input type="checkbox" v-model="array" id="shuzu2" value="董存瑞">
+        <label for="shuzu2">董存瑞</label>
+        <input type="checkbox" v-model="array" id="shuzu3" value="邱少云">
+        <label for="shuzu3">邱少云</label><br/>
+        <span>选中了:{{array}}</span><br/><br/>
+        5.单选按钮:<br/><input type="radio" v-model="kaiguan2" id="man" value="男">
+        <label for="man">男</label><br/>
+        <input type="radio" v-model="kaiguan2" id="woman" value="女">
+        <label for="woman">女</label><br/>
+        <span>选择了:{{kaiguan2}}</span><br/><br/>
+        6.选择列表select<br/>
+        单击(绑定String):
+        <select v-model="array2">
+            <option>粉蒸排骨</option>
+            <option>红烧猪肉</option>
+            <option>剁椒鱼头</option>
+        </select>>
+        我吃:{{array2}}<br/>
+        多选(绑定到一个数组):<br/>
+        <select multiple width="70px" v-model="array3">
+            <option>红烧肉</option>
+            <option>酸菜鱼</option>
+            <option>手撕鸡</option>
+        </select>
+        选择了:{{array3}}
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                message:'Hello GDMEC',
+                kaiguan:false,
+                kaiguan2:false,
+                array:[],
+                array2:[],
+                array3:[]
+            }
+        })
+    </script>
+</body>
+</html>

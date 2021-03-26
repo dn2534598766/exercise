@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../lib/vue-2.4.0.js"></script>
+<body>
+    <div id="app">
+        <h6>my-component</h6>
+        <my-component></my-component>
+        <h6>另一个my-component</h6>
+        <my-component></my-component>
+    </div>
+    <template id="my">
+        <div>
+            <div>this is div content</div>
+            <p>this is p content from template</p>
+            <p>message={{message}}</p>
+            <button @click="message='update message'">修改message</button>
+        </div>
+    </template>
+    <script>
+        var data={
+            message:'global message'
+        }
+        const my=Vue.component('my-component',{
+            template:'#my',
+            data:function(){
+                return {
+                    message:'component-message'
+                }
+            }
+        })
+        var vm=new Vue({
+            el:'#app'
+        })
+        
+        
+    </script>
+</body>
+</html>

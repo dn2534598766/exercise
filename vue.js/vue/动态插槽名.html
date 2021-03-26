@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <p>父组件---</p>
+    <york-component>
+        <template v-slot:[myarr[1]]>
+            {{myarr[0]}}
+            {{myarr[1]}}
+        </template>
+            <template #[myarr[0]]>  <!--具名插槽的缩写 # 代替 v-slot: 有参数才可用缩写，必须明确插槽名 -->
+
+        </template>
+    </york-component>
+    <p>---父组件</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{myarr:['usersection','buildingsection']},
+            components:{
+                yorkComponent:{
+                    template:`<div>
+                    <p>子组件***</p>
+                    <p>usersection----</p>
+                    <slot name='usersection'></slot>
+                    <p>----usersection</p>
+                    <p>buildingsection---</p>
+                    <slot name='buildingsection'></slot>
+                    <p>------buildingsection</p>
+                    <p>***子组件</p>
+                    </div>`,
+                    data(){
+                        return {
+                            user:{
+                                firstname:'york',
+                                lastname:'cui'
+                            },
+                            building:{
+                                name:'图文楼',
+                                location:'north'
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

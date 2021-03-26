@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component :message="message" @my-component-zi="jieshou"></my-component>
+        <h6>父组件内容</h6>
+        <p>message=={{message}}</p>
+    </div>
+    <template id="my">
+        <div>
+        <p>message={{message}}</p>
+        <button @click="dian">单击更新父组件</button>
+    </div>
+    </template>
+    <script>
+        const myComponent={
+            template:'#my',
+            props:['message'],
+            methods:{
+                dian:function(){
+                    this.$emit('my-component-zi','update message from child')
+                }
+            }
+        }
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                message:'from parent'
+            },
+            components:{
+                myComponent
+            },
+            methods:{
+                jieshou:function(parm){
+                    console.log(parm)
+                    this.message=arguments[0]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

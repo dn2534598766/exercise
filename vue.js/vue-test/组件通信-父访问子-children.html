@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件通信-父访问子-children</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn ref="aaa"></cpn>
+    <cpn></cpn>
+    <button @click="getChild()">点击获取子组件对象</button>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>{{message}}</h2>
+    </div>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      components:{
+        'cpn':{
+          template:'#cpn',
+          data(){
+            return {
+              message:'我是子组件'
+            }
+          }
+        }
+      },
+      methods:{
+        getChild(){
+          console.log(this.$refs.aaa.message)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

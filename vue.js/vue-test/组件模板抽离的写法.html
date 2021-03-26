@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件模板抽离的写法</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn2></cpn2>
+  </div>
+
+  <script type="text/x-template" id="cpn">
+    <div>
+      <h2>我是cpn</h2>
+    </div>
+  </script>
+
+  <template id="cpn2">
+    <div>
+      <h2>我是cpn2</h2>
+    </div>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    Vue.component('cpn2',{
+      template:'#cpn2'
+    })
+    const app = new Vue({
+      el:'#app',
+      components:{
+        'cpn':{
+          template:'#cpn'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

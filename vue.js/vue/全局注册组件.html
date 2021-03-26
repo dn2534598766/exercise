@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../lib/vue-2.4.0.js"></script>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+    <template id="my">
+        <p>Hello world</p>
+        <div>this is my-component content.</div>
+       
+    </template>
+    <script>
+            Vue.component('my-component',{
+                template:'#my'
+            });
+            var vm=new Vue({
+                el:"#app"
+            })
+    </script>
+</body>
+</html>

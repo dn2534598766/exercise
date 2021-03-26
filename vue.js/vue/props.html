@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../lib/vue-2.4.0.js"></script>
+<body>
+    <div id="app">
+        <input type="text" v-model="info"/>
+        <child :msg.sync="info"></child>
+        <div>{{info}}</div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:function(){
+                return {
+                    info:"abcd"
+                }
+            },
+            components:{
+                'child':{
+                    props:'msg',
+                    template:'<div>{{msg}} Family! </div><button @click="dian2">点我</button>',
+                    methods:{
+                        dian2:function(){
+                            this.msg='adcv'
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

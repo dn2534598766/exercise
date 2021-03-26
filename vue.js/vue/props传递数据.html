@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../lib/vue-2.4.0.js"></script>
+<body>
+    <div id="app">
+        <my-component :usr="user"></my-component>
+        <my-component usr="user"></my-component>
+        <button @click="dian">点我</button>
+    </div>
+    <script>
+        const myComponent={
+            props:["usr"],
+            template:'<span>{{usr}}</span>'
+        }
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                user:{
+                    name:"test",
+                    age:"18"
+                }
+            },
+            methods:{
+                dian:function(){
+                    this.user={
+                        name:"aaa",
+                        age:"999"
+                    }
+                }
+            },
+            components:{
+                myComponent
+            }
+        })
+    </script>
+</body>
+</html>

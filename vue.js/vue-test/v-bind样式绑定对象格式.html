@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-bind样式绑定对象格式</title>
+  <script src="../lib/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- <p :style="{fontSize:fontsize,color:fontcolor}">{{message}}</p>    驼峰命名-->    
+    <!-- <p :style="{'font-size':fontsize2+'px',color:fontcolor}">{{message}}</p>     -连接要用单引号括起-->
+    <!-- <p :style="getStyle()">{{message}}</p>  用方法return -->
+  </div>
+  <script>
+    const app=new Vue({
+      el:'#app',
+      data:{
+        message:"你好！",
+        fontsize:'100px',
+        fontcolor:'red',
+        fontsize2:100
+      },
+      methods:{
+        getStyle:function(){
+          return {'font-size':this.fontsize2+'px',color:this.fontcolor}
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model的修饰符</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model.lazy="test1">
+    <h2>{{test1}}</h2>
+    <input type="text" v-model.number="test2">
+    <h2>{{typeof test2}}---{{test2}}</h2>
+    <input type="text" v-model.trim="test3">
+    <h2>{{test3}}</h2>
+  </div>
+
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        test1:'hello',
+        test2:0,
+        test3:'hi'
+      }
+    })
+  </script>
+</body>
+</html>

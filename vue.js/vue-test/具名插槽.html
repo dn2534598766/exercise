@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>具名插槽</title>
+</head>
+<body>
+  <div id="app">
+    <cpn><button  slot="b">点击</button></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>{{message}}</h2>
+      <slot name="a">hello?</slot>
+      <p>{{message}}</p>
+      <slot name="b">hi</slot>
+  </div>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      components:{
+        'cpn':{
+          template:'#cpn',
+          data(){
+            return {
+              message:'我是子组件'
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.js初体验</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="humour"><p>{{content}}</p></div>
+    <script>
+    var QWQ=new Vue({
+        el:"#humour",
+        data:{
+                content:"Hello world!"
+            }
+    })
+    setTimeout(function(){
+        QWQ.$data.content='bye,world'
+    },2000)
+</script>
+</body>
+<html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域插槽</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <todo-list>
+        <template v-slot:todo="slotProps">
+            {{slotProps.user.firstName}}
+        </template>
+        </todo-list>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            components:{
+                todoList:{
+                    template:`<div>
+                        <slot name="todo" :user="user" :test="test">
+                            {{user.lastName}}
+                        </slot>
+                        </div>`,
+                    data(){
+                        return {
+                            user:{
+                                lastName:"Zhang",
+                                firstName:"yue"
+                            },
+                            test:[1,2,3,4]
+                        }
+                    }
+                    
+                },
+                
+                
+            }
+        })
+    </script>
+</body>
+</html>

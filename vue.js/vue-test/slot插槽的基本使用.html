@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot插槽的基本使用</title>
+</head>
+<body>
+  <div id="app">
+    <cpn><button>点击按钮</button></cpn>
+    <cpn><a href="baidu.com">点击链接</a></cpn>
+    <cpn><div>a<p>b</p></div></cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>{{message}}</h2>
+      <slot><button>这是插槽的默认内容</button></slot>
+      <p>{{message}}</p>
+    </div>
+  </template>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+
+      },
+      components:{
+        'cpn':{
+          template:'#cpn',
+          data(){
+            return {
+              message:'我是子组件'
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

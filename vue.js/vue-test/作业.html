@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/vue.js"></script>
+</head>
+<style>
+  .active{
+    color:red;
+  }
+</style>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in movies" :class="{'active':index==control}" @click="change(index)">{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    const app=new Vue({
+      el:'#app',
+      data:{
+        movies:['火影忍者','进击的巨人','海贼王','铠甲勇士'],
+        control:Infinity
+      },
+      methods:{
+        change:function(index){
+
+          this.control=index
+        }
+      }
+    })
+  </script>
+</body>
+</html>

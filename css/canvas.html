@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="humour"></canvas>
+  <div></div>
+
+  <script>
+    window.onload=function(){
+      let canvas=document.getElementById('humour')
+      let context=canvas.getContext('2d')
+      context.beginPath()
+      context.lineWidth=4
+      context.lineJoin='round'
+      context.strokeStyle='#FF4500'
+      context.moveTo(130,0)
+      context.lineTo(100,40)
+      context.lineTo(120,40)
+      context.lineTo(90,80)
+      context.lineTo(115,80)
+      context.lineTo(80,120)
+      context.lineTo(180,120)
+      context.lineTo(145,80)
+      context.lineTo(170,80)
+      context.lineTo(140,40)
+      context.lineTo(160,40)
+      context.lineTo(130,0)
+      context.closePath()
+      context.stroke()
+      context.fillStyle='#339900'
+      context.fill()
+      context.fillStyle='#800000'
+      context.fillRect(120,120,20,50)
+    }
+  </script>
+</body>
+</html>

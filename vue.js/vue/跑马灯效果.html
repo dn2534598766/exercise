@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跑马灯效果</title>
+</head>
+<body>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <div id="QWQ">
+        <input type="button" value="浪起来" @click="lang">
+        <input type="button" value="低调" @click="stop" >
+        <p>{{msg}}</p>
+    </div>
+    <script>
+        var a=new Vue({
+            el:"#QWQ",
+            data:{
+                msg:"猥琐发育，别浪！",
+                intervalId:null
+            },
+            methods:{
+                lang(){
+                    if(this.intervalId!=null) return;
+                    this.intervalId=setInterval(() => {
+                    var start=this.msg.substring(0,1);
+                    var end=this.msg.substring(1);
+                    this.msg=end+start;
+                   }, 400);
+                },
+                stop(){
+                    clearInterval(this.intervalId);
+                    this.intervalId=null;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

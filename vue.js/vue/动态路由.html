@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态路由</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <router-link to="/home/2">home</router-link>
+            <router-link to="/about/humour">about</router-link>
+            <router-view></router-view>
+        </p>
+    </div>
+    <script>
+        var Home = {
+            template: `<div>hello</div>`,
+        };
+        var About = {
+            template: `<h2>{{$route.params.user}}</h2>`,
+        };
+        const routes = [{
+                path: "/home/:id",
+                name: "default",
+                component: Home,
+            },
+            {
+                path: "/about/:user?",
+                name: "about",
+                component: About,
+            },
+        ];
+        const router = new VueRouter({
+            routes,
+        });
+        var vm = new Vue({
+            data: {},
+            watch: {
+                $route(to, from) {
+                    console.log("下面是to的路径");
+                    console.log(to.path);
+                    console.log("下面是from");
+                    console.log(from);
+                },
+            },
+            router,
+        }).$mount("#app");
+    </script>
+</body>
+
+</html>

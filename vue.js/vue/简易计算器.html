@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div class="a">
+        <input  type="text" v-model="num1">
+        <select v-model="opt">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input  type="text" v-model="num2">
+        <input type="button" value="=" @click="dengyu">
+        <input type="text" v-model="result">
+    </div>
+    <script>
+        var QAQ=new Vue({
+            el:".a",
+            data:{
+                opt:"+",
+                num1:0,
+                num2:0,
+                result:0
+            },
+            methods:{
+                dengyu(){
+                    /*switch(this.opt){
+                        case "+":
+                            this.result=Number.parseInt(this.num1)+Number.parseInt(this.num2);
+                            break;
+                        case "-":
+                            this.result=Number.parseInt(this.num1)-Number.parseInt(this.num2);
+                            break;
+                        case "*":
+                            this.result=Number.parseInt(this.num1)*Number.parseInt(this.num2);
+                            break;
+                        case "/":
+                            this.result=Number.parseInt(this.num1)/Number.parseInt(this.num2);
+                            break;
+
+                    }*/
+                    var b='Number.parseInt(this.num1)'+this.opt+'Number.parseInt(this.num2)';
+                    this.result=eval(b);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

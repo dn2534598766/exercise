@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        基本用法<br/><br/>
+            <ul>
+                <li v-for="item in items">{{item.message}}:{{item.price}}</li>
+            </ul><br/><br/>
+        基本用法+索引<br/><br/>
+        <ul>
+            <li v-for="(item,index) in items">{{index+1}}{{item.message}}:{{item.price}}</li>
+        </ul><br/><br/>
+        使用模板标签&lt;template&lt;来渲染多个元素块<br/>
+        <template v-for="item in items">
+            <li style="background-color: #FF8C00;">{{item.message}}</li>
+            <li style="background-color: #4169E1;">{{item.price}}</li>
+        </template><br/>
+        对象迭代<br/>
+        <ul>
+            <li v-for="item in myobj">{{item}}</li>
+        </ul><br/>
+        对象迭代<br/>
+        <ul>
+            <li v-for="(value,key,index) in myobj">{{index}}--{{key}}--{{value}}</li>
+        </ul><br/>
+        整数迭代<br/>
+        <div>
+        <span v-for="index in 10">{{index}}-></span>
+    </div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                items:[
+                    {message:'大白菜',price:0.5},
+                    {message:'油麦菜',price:0.6},
+                    {message:'小白菜',price:0.8}
+            ],
+            myobj:{
+                name:'滑稽',
+                gender:'男',
+                height:'170cm',
+                hobby:'敲代码'
+            }
+            }
+        });
+    </script>
+</body>
+</html>
