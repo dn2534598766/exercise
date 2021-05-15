@@ -1,0 +1,10 @@
+module.exports={
+    configureWebpack:{
+        alias:{
+            'assets':'@/assets',
+            'network':'@/network',
+            'components':'@/components',
+            'views':'#/views'
+        }
+    }
+}
