@@ -11,7 +11,7 @@
 // const b = Buffer.from('djaid')
 // console.log(a.toString())
 // console.log(a.toJSON())
-// a.copy(b)
+// a.copy(b) 
 // console.log(b.toString())
 const fs = require('fs')
 // fs.readFile('a.txt',(err,data)=>{
