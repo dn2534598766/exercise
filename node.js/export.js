@@ -44,5 +44,5 @@ const fs = require('fs')
 
 fs.unlink('hello.txt',err=>{
     if(err) throw err
-    console.log('删除文件成功!')
+    console.log('删除文件成功!') 
 })
