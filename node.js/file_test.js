@@ -9,7 +9,7 @@ const fs = require('fs')
 // fs.readdir('./',{withFileTypes:true},(err,file)=>{
 //     if(err) throw err
 //     console.log(file)
-// })
+// }) 
 
 fs.rmdir('./a',{recursive:true},err=>{
     if(err) throw err
