@@ -11,7 +11,10 @@ const fs = require('fs')
 //     console.log(file)
 // }) 
 
-fs.rmdir('./a',{recursive:true},err=>{
-    if(err) throw err
-    console.log('删除文件夹成功!')
+// fs.rmdir('./a',{recursive:true},err=>{
+//     if(err) throw err
+//     console.log('删除文件夹成功!')
+// })
+fs.watch('./',(eventType,data)=>{
+    console.log(eventType,data)
 })
